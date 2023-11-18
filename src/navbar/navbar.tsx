@@ -7,8 +7,6 @@ export const Navbar = () => {
 
   return (
     <>
-      <div className={classes.body} />
-
       <nav className={classes.navbar}>
         <button onClick={() => navigate("/")}>
           <HomeIcon /> <span>Home</span>

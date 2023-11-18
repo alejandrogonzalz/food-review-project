@@ -1,15 +1,6 @@
 @use "../sass/colors" as *;
 @use "../sass/fonts" as *;
 
-.body {
-  position: absolute;
-  z-index: -1;
-  height: 100%;
-  width: 100%;
-  background-color: $gray-600;
-  opacity: 0.3;
-}
-
 .navbar {
   position: fixed;
   display: grid;
@@ -21,6 +12,7 @@
   right: 20px;
   padding: 15px 20px;
   border-radius: 25px;
+  z-index: 1000;
 
   & button {
     all: unset;
