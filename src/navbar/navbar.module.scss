@@ -1,0 +1,41 @@
+@use "../sass/colors" as *;
+@use "../sass/fonts" as *;
+
+.body {
+  position: absolute;
+  z-index: -1;
+  height: 100%;
+  width: 100%;
+  background-color: $gray-600;
+  opacity: 0.3;
+}
+
+.navbar {
+  position: fixed;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 25px;
+  background-color: $gray-900;
+  bottom: 15px;
+  left: 20px;
+  right: 20px;
+  padding: 15px 20px;
+  border-radius: 25px;
+
+  & button {
+    all: unset;
+    font-family: $font-inter, $font-fira-code, $font-roboto !important;
+    color: white;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 8px;
+    border-radius: 15px;
+    &:hover {
+      cursor: pointer;
+      background-color: #f7fafc62;
+    }
+  }
+}

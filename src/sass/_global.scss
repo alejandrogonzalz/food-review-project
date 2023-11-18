@@ -20,6 +20,16 @@ body {
   height: 100%;
   width: 100%;
   font-family: $font-inter, $font-fira-code, $font-roboto;
+  background: linear-gradient(
+    56deg,
+    $gray-100 0,
+    $yellow-100 50%,
+    $red-100 100%
+  );
+}
+
+main {
+  padding: 25px;
 }
 
 img {
