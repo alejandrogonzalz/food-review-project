@@ -2,12 +2,63 @@ import classes from "./dashboard.module.scss";
 import * as Separator from "@radix-ui/react-separator";
 import FLAME from "./svg/flame.svg";
 
-// import { useEffect } from "react";
+import { useState, MouseEvent } from "react";
 import { foodArr } from "../dummyData";
 import { ClockIcon } from "@radix-ui/react-icons";
 import { useScreenWidth } from "../app/AppContext";
+import { MyDialog } from "./dialog";
+
+interface CommonFoodProperties {
+  title: string | null;
+  image: string;
+  calories: number | null;
+}
+
+interface FoodState extends CommonFoodProperties {
+  cookingTime: number | null;
+  description: string | null;
+  dinerScore: number | null;
+  ingredients: string | null;
+}
+
+interface CardProps extends CommonFoodProperties {
+  title: string;
+  time: number;
+  description: string;
+  dinerScore: number;
+  id: string;
+  onOpenDialog: (event: MouseEvent<HTMLDivElement>) => void;
+}
 
 export const Dashboard = () => {
+  const [state, setState] = useState<FoodState>({
+    title: null,
+    image: "",
+    cookingTime: null,
+    calories: null,
+    description: null,
+    dinerScore: null,
+    ingredients: null,
+  });
+
+  const selectDialog =
+    (id: number) => (e: React.MouseEvent<HTMLDivElement>) => {
+      console.log(`Clicked on card with id ${id}`, e);
+      const obj = foodArr[id];
+
+      setState((prev) => {
+        const nextState = { ...prev };
+
+        for (const key in obj) {
+          if (Object.hasOwn(obj, key)) {
+            nextState[key as keyof foodArr] = obj[key as keyof foodArr];
+          }
+        }
+
+        return nextState; // Return the updated state
+      });
+    };
+
   return (
     <>
       <div>
@@ -22,35 +73,38 @@ export const Dashboard = () => {
           <Card
             key={index}
             title={item.title}
-            img={item.image}
+            image={item.image}
             time={item.cookingTime}
             calories={item.calories}
             description={item.description}
-            score={item.dinerScore}
+            dinerScore={item.dinerScore}
+            id={item.id.toString()}
+            onOpenDialog={selectDialog(index)}
           />
         ))}
       </div>
+
+      <MyDialog
+        title={state.title}
+        image={state.image}
+        time={state.cookingTime}
+        calories={state.calories}
+        description={state.description}
+        dinerScore={state.dinerScore}
+      />
     </>
   );
 };
 
-interface CardProps {
-  title: string;
-  img: string;
-  time: number;
-  calories: number;
-  description: string;
-  score: number;
-}
-
 const Card = ({
   title,
-  img,
+  image,
   time,
   calories,
   description,
-  score,
-  ...props
+  dinerScore,
+  id,
+  onOpenDialog,
 }: CardProps) => {
   const screenWidth = useScreenWidth();
 
@@ -67,9 +121,9 @@ const Card = ({
   };
 
   return (
-    <div {...props} className={classes.card_container}>
+    <div className={classes.card_container} id={id} onClick={onOpenDialog}>
       <div className={classes.img_content}>
-        <img src={img} alt={title} />
+        <img src={image} alt={title} />
       </div>
 
       <div className={classes.card_content}>
@@ -87,7 +141,7 @@ const Card = ({
         <p className={classes.description}>{wordCounter(description)}</p>
 
         <div className={classes.score}>
-          <span>{score}</span>
+          <span>{dinerScore}</span>
         </div>
       </div>
     </div>

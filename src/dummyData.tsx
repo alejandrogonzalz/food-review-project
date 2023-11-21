@@ -13,7 +13,7 @@ import RED_POZOLE from "./assets/pozole.png";
 
 export const foodArr = [
   {
-    id: 1,
+    id: 0,
     title: "Meat Pizza",
     cookingTime: 25,
     ingredients: [
@@ -31,7 +31,7 @@ export const foodArr = [
       "Meat pizza with tomato sauce, mozzarella cheese, pepperoni, sausage, and bell peppers.",
   },
   {
-    id: 2,
+    id: 1,
     title: "Ramen",
     cookingTime: 15,
     ingredients: [
@@ -49,7 +49,7 @@ export const foodArr = [
       "Comforting ramen with noodles, flavorful broth, soy sauce, green onions, boiled eggs, and sliced pork.",
   },
   {
-    id: 3,
+    id: 2,
     title: "Teriyaki Chicken Bowl",
     cookingTime: 25,
     ingredients: [
@@ -66,7 +66,7 @@ export const foodArr = [
       "Teriyaki chicken bowl with tender chicken, steamed rice, broccoli, carrots, and sesame seeds.",
   },
   {
-    id: 4,
+    id: 3,
     title: "Tacos",
     cookingTime: 20,
     ingredients: [
@@ -84,7 +84,7 @@ export const foodArr = [
       "Classic tacos with seasoned ground beef, lettuce, tomatoes, cheese, and salsa.",
   },
   {
-    id: 5,
+    id: 4,
     title: "Yakitori",
     cookingTime: 30,
     ingredients: ["Chicken skewers", "Soy sauce", "Mirin", "Sake", "Sugar"],
@@ -95,7 +95,7 @@ export const foodArr = [
       "Delicious chicken skewers grilled and glazed with a savory soy-based sauce.",
   },
   {
-    id: 6,
+    id: 5,
     title: "Grilled Chicken Salad",
     cookingTime: 20,
     ingredients: [
@@ -113,7 +113,7 @@ export const foodArr = [
       "Grilled chicken salad with mixed greens, cherry tomatoes, cucumber, feta cheese, and balsamic vinaigrette.",
   },
   {
-    id: 7,
+    id: 6,
     title: "Vegan Sushi Rolls",
     cookingTime: 35,
     ingredients: [
@@ -133,7 +133,7 @@ export const foodArr = [
       "Vegan sushi rolls with sushi rice, nori seaweed, carrot, bell pepper, cucumber, avocado, soy sauce, and wasabi.",
   },
   {
-    id: 8,
+    id: 7,
     title: "Lasagna",
     cookingTime: 40,
     ingredients: [
@@ -150,7 +150,7 @@ export const foodArr = [
       "Classic lasagna with savory ground beef, tomato sauce, ricotta cheese, and mozzarella cheese.",
   },
   {
-    id: 9,
+    id: 8,
     title: "Fish and Chips",
     cookingTime: 30,
     ingredients: [
@@ -169,7 +169,7 @@ export const foodArr = [
       "Classic fish and chips with crispy battered white fish fillets, golden fries, and a side of lemon wedges.",
   },
   {
-    id: 10,
+    id: 9,
     title: "Butter Chicken",
     cookingTime: 45,
     ingredients: [
@@ -188,7 +188,7 @@ export const foodArr = [
       "Butter chicken - a rich and creamy Indian dish with tender chicken cooked in a flavorful tomato and butter sauce.",
   },
   {
-    id: 11,
+    id: 10,
     title: "Japanese Curry",
     cookingTime: 35,
     ingredients: [
@@ -205,7 +205,7 @@ export const foodArr = [
       "Japanese curry with your choice of chicken or vegetables, served with carrots, potatoes, and onions in a savory curry sauce.",
   },
   {
-    id: 12,
+    id: 11,
     title: "Red Pozole",
     cookingTime: 60,
     ingredients: [
