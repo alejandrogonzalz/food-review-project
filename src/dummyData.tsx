@@ -163,7 +163,7 @@ export const foodArr = [
       "Lemon wedges",
     ],
     calories: 500,
-    dinerScore: 4.4,
+    dinerScore: 3.4,
     image: FISH_AND_CHIPS,
     description:
       "Classic fish and chips with crispy battered white fish fillets, golden fries, and a side of lemon wedges.",

@@ -1,2 +1,294 @@
 @use "../sass/colors" as *;
 @use "../sass/breakpoints" as *;
+
+.dialog_overlay {
+  background: rgba(0 0 0 / 0.5);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: grid;
+  place-items: center;
+  overflow-y: scroll;
+  z-index: 10000000;
+}
+
+.dialog_content {
+  position: relative;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: hsl(206 22% 7% / 35%) 0px 10px 38px -10px,
+    hsl(206 22% 7% / 20%) 0px 10px 20px -15px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 100000000;
+
+  &[data-state="open"] {
+    animation: fadeIn 150ms ease-in;
+  }
+
+  &[data-state="closed"] {
+    animation: fadeOut 150ms ease-out;
+  }
+
+  &:hover {
+    outline: none;
+  }
+
+  width: 280px;
+  height: calc(100vh - 90px);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  padding: 15px;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+    transform: translateY(10);
+  }
+}
+
+.dialog_close_button {
+  all: unset;
+  border-radius: 50px;
+  aspect-ratio: 1/1;
+  height: 28px;
+  display: grid;
+  align-content: center !important;
+  color: $red-900;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  span {
+    border-radius: 50%;
+    aspect-ratio: 1/1;
+    display: grid;
+    place-content: center;
+    svg {
+      font-size: 10px;
+      align-self: center;
+    }
+  }
+
+  &:hover {
+    background-color: $red-200;
+    cursor: pointer;
+  }
+  &:focus {
+    box-shadow: 0 0 0 2px $red-800;
+  }
+}
+
+.img_content {
+  aspect-ratio: 1/1;
+  position: relative;
+  display: grid;
+  flex: 1;
+
+  img {
+    width: 325px;
+    position: absolute;
+    top: 0;
+    right: -50%;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+
+.card_content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.title {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  h3 {
+    font-size: 1.45rem;
+    text-align: center;
+    white-space: nowrap;
+  }
+  .score {
+    display: flex;
+    align-items: center;
+    color: $yellow-600;
+    span {
+      margin: 0 5px;
+      color: black;
+    }
+  }
+  margin-bottom: 10px;
+}
+
+.separator {
+  width: 100%;
+  height: 1px;
+  background-color: $gray-900;
+}
+
+.svg_content {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 10px;
+  margin: 3px 0;
+}
+
+.separator_vertical {
+  width: 1px;
+  height: 50%;
+  align-self: center;
+  background-color: $gray-900;
+}
+
+.svg_container {
+  span {
+    font-size: 1.15rem;
+    font-weight: 500;
+    color: $pink-900;
+  }
+}
+
+.description {
+  font-size: 0.9rem;
+  font-style: italic;
+  color: $gray-800;
+  font-weight: 300;
+  text-align: justify;
+  padding: 15px 10px;
+}
+
+.ingredients {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  display: grid;
+  row-gap: 5px;
+  list-style: none;
+  margin-bottom: 10px;
+  li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1rem;
+    font-weight: 400;
+    svg {
+      color: $indigo-700;
+      min-width: 15px;
+    }
+  }
+}
+
+.five_ingredients {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.close_button {
+  all: unset;
+  justify-self: flex-end;
+  margin-top: auto;
+  padding: 8px 10px;
+  border-radius: 6px;
+  font-weight: 700;
+  box-shadow: 0 0 0 1.5px $gray-900;
+  transition: transform 200ms ease-in-out;
+
+  &:hover,
+  &:active {
+    cursor: pointer;
+    transform: scale(1.075);
+  }
+}
+
+/// ***************************
+/// BREAKPOINTS
+/// ***************************
+
+// for samsung galaxy s8+
+@media screen and (max-width: 300px) {
+  .img_content img {
+    width: 260px;
+    top: -50px;
+  }
+}
+
+@media screen and (min-width: 425px) {
+  .dialog_content {
+    width: 325px;
+    height: calc(100vh - 85px);
+  }
+  .img_content img {
+    width: 358px;
+  }
+}
+
+// for iphones when horizontal mode
+// @media screen and (min-width: 800px) and (min-height: 375px) {
+//   .dialog_content {
+//     flex-direction: row;
+//     height: 90vh;
+//     width: 90vw;
+//   }
+//   .img_content img {
+//     all: unset;
+//     width: 300px;
+//     position: absolute;
+//     top: 50%;
+//     transform: translateY(-50%);
+//     left: -50px;
+//   }
+// }
+
+@media screen and (min-width: $breakpoint-tablet) {
+  .dialog_content {
+    width: 650px;
+    height: calc(100vh - 90px);
+  }
+  .img_content img {
+    width: calc(50px + 40vh);
+    top: -65px;
+  }
+  .separator {
+    width: 50%;
+  }
+}
+
+@media screen and (min-width: $breakpoint-desktop) {
+  .dialog_content {
+    flex-direction: row;
+    height: auto;
+    width: calc(400px + 300px);
+  }
+  .img_content img {
+    all: unset;
+    width: 400px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: -100px;
+  }
+}

@@ -2,7 +2,7 @@ import classes from "./dashboard.module.scss";
 import * as Separator from "@radix-ui/react-separator";
 import FLAME from "./svg/flame.svg";
 
-import { useEffect, useState, MouseEvent } from "react";
+import { useState, MouseEvent } from "react";
 import { foodArr } from "../dummyData";
 import { ClockIcon } from "@radix-ui/react-icons";
 import { useScreenWidth } from "../app/AppContext";
@@ -18,7 +18,7 @@ interface FoodState extends CommonFoodProperties {
   cookingTime: number;
   description: string;
   dinerScore: number;
-  ingredients: string;
+  ingredients: string[];
 }
 
 interface CardProps extends CommonFoodProperties {
@@ -38,25 +38,28 @@ export const Dashboard = () => {
     calories: 0,
     description: "",
     dinerScore: 0,
-    ingredients: "",
+    ingredients: [],
   };
   const [state, setState] = useState<FoodState>(initialState);
+  const [open, setOpen] = useState<boolean>(false);
 
   const selectDialog = (id: number) => {
     const obj = foodArr[id];
     const nextState: FoodState = { ...initialState };
-
     for (const key in obj) {
       if (Object.hasOwn(obj, key)) {
-        nextState[key as keyof FoodState] = obj[key as keyof FoodState];
+        const value = obj[key];
+        nextState[key] = value;
       }
     }
     setState(nextState);
+    setOpen(true);
   };
 
-  useEffect(() => {
-    console.log(state);
-  }, [state]);
+  // useEffect(() => {
+  //   console.log(state);
+  //   console.log(open);
+  // }, [state, open]);
 
   return (
     <>
@@ -90,6 +93,9 @@ export const Dashboard = () => {
         calories={state.calories}
         description={state.description}
         dinerScore={state.dinerScore}
+        ingredients={state.ingredients}
+        open={open}
+        onOpenChange={setOpen}
       />
     </>
   );

@@ -21,8 +21,8 @@ body {
   width: 100%;
   font-family: $font-inter, $font-fira-code, $font-roboto;
   background: linear-gradient(
-    56deg,
-    $gray-100 0,
+    35deg,
+    $gray-200 0,
     $yellow-100 50%,
     $red-100 100%
   );
@@ -30,7 +30,9 @@ body {
 
 main {
   padding: 25px;
-  background-color: #7180962d;
+  background-color: #71809636;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 }
 
 h1,
