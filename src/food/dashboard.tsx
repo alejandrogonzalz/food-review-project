@@ -2,23 +2,23 @@ import classes from "./dashboard.module.scss";
 import * as Separator from "@radix-ui/react-separator";
 import FLAME from "./svg/flame.svg";
 
-import { useState, MouseEvent } from "react";
+import { useEffect, useState, MouseEvent } from "react";
 import { foodArr } from "../dummyData";
 import { ClockIcon } from "@radix-ui/react-icons";
 import { useScreenWidth } from "../app/AppContext";
 import { MyDialog } from "./dialog";
 
 interface CommonFoodProperties {
-  title: string | null;
+  title: string;
   image: string;
-  calories: number | null;
+  calories: number;
 }
 
 interface FoodState extends CommonFoodProperties {
-  cookingTime: number | null;
-  description: string | null;
-  dinerScore: number | null;
-  ingredients: string | null;
+  cookingTime: number;
+  description: string;
+  dinerScore: number;
+  ingredients: string;
 }
 
 interface CardProps extends CommonFoodProperties {
@@ -31,33 +31,32 @@ interface CardProps extends CommonFoodProperties {
 }
 
 export const Dashboard = () => {
-  const [state, setState] = useState<FoodState>({
-    title: null,
+  const initialState = {
+    title: "",
     image: "",
-    cookingTime: null,
-    calories: null,
-    description: null,
-    dinerScore: null,
-    ingredients: null,
-  });
+    cookingTime: 0,
+    calories: 0,
+    description: "",
+    dinerScore: 0,
+    ingredients: "",
+  };
+  const [state, setState] = useState<FoodState>(initialState);
 
-  const selectDialog =
-    (id: number) => (e: React.MouseEvent<HTMLDivElement>) => {
-      console.log(`Clicked on card with id ${id}`, e);
-      const obj = foodArr[id];
+  const selectDialog = (id: number) => {
+    const obj = foodArr[id];
+    const nextState: FoodState = { ...initialState };
 
-      setState((prev) => {
-        const nextState = { ...prev };
+    for (const key in obj) {
+      if (Object.hasOwn(obj, key)) {
+        nextState[key as keyof FoodState] = obj[key as keyof FoodState];
+      }
+    }
+    setState(nextState);
+  };
 
-        for (const key in obj) {
-          if (Object.hasOwn(obj, key)) {
-            nextState[key as keyof foodArr] = obj[key as keyof foodArr];
-          }
-        }
-
-        return nextState; // Return the updated state
-      });
-    };
+  useEffect(() => {
+    console.log(state);
+  }, [state]);
 
   return (
     <>
@@ -79,7 +78,7 @@ export const Dashboard = () => {
             description={item.description}
             dinerScore={item.dinerScore}
             id={item.id.toString()}
-            onOpenDialog={selectDialog(index)}
+            onOpenDialog={() => selectDialog(index)}
           />
         ))}
       </div>
@@ -103,7 +102,6 @@ const Card = ({
   calories,
   description,
   dinerScore,
-  id,
   onOpenDialog,
 }: CardProps) => {
   const screenWidth = useScreenWidth();
@@ -121,7 +119,7 @@ const Card = ({
   };
 
   return (
-    <div className={classes.card_container} id={id} onClick={onOpenDialog}>
+    <div className={classes.card_container} onClick={onOpenDialog}>
       <div className={classes.img_content}>
         <img src={image} alt={title} />
       </div>
