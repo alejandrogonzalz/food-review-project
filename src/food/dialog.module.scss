@@ -229,7 +229,7 @@
 /// ***************************
 
 // for samsung galaxy s8+
-@media screen and (max-width: 300px) {
+@media screen and (max-width: 375px) {
   .img_content img {
     width: 260px;
     top: -50px;
@@ -270,14 +270,17 @@
   }
   .img_content img {
     width: calc(50px + 40vh);
-    top: -65px;
+    top: -50px;
   }
   .separator {
     width: 50%;
   }
 }
 
-@media screen and (min-width: $breakpoint-desktop) {
+@media screen and (min-width: $breakpoint-laptop) {
+  .separator {
+    width: 80%;
+  }
   .dialog_content {
     flex-direction: row;
     height: auto;
@@ -285,10 +288,29 @@
   }
   .img_content img {
     all: unset;
-    width: 400px;
+    width: 450px;
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    left: -100px;
+    left: -150px;
+  }
+}
+
+@media screen and (min-width: $breakpoint-desktop) {
+  .separator {
+    width: 80%;
+  }
+  .dialog_content {
+    flex-direction: row;
+    height: auto;
+    width: calc(400px + 300px);
+  }
+  .img_content img {
+    all: unset;
+    width: 450px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: -150px;
   }
 }

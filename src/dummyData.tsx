@@ -25,7 +25,7 @@ export const foodArr = [
       "Bell peppers",
     ],
     calories: 550,
-    dinerScore: 4.5,
+    dinerScore: 2.9,
     image: MEAT_PIZZA,
     description:
       "Meat pizza with tomato sauce, mozzarella cheese, pepperoni, sausage, and bell peppers.",
@@ -60,7 +60,7 @@ export const foodArr = [
       "Sesame seeds",
     ],
     calories: 600,
-    dinerScore: 4.6,
+    dinerScore: 4.3,
     image: TERIYAKI_CHICKEN_BOWL,
     description:
       "Teriyaki chicken bowl with tender chicken, steamed rice, broccoli, carrots, and sesame seeds.",
@@ -78,7 +78,7 @@ export const foodArr = [
       "Salsa",
     ],
     calories: 350,
-    dinerScore: 4.4,
+    dinerScore: 4.9,
     image: TACOS,
     description:
       "Classic tacos with seasoned ground beef, lettuce, tomatoes, cheese, and salsa.",
@@ -89,7 +89,7 @@ export const foodArr = [
     cookingTime: 30,
     ingredients: ["Chicken skewers", "Soy sauce", "Mirin", "Sake", "Sugar"],
     calories: 480,
-    dinerScore: 4.9,
+    dinerScore: 3.9,
     image: YAKITORI,
     description:
       "Delicious chicken skewers grilled and glazed with a savory soy-based sauce.",
@@ -107,7 +107,7 @@ export const foodArr = [
       "Balsamic vinaigrette",
     ],
     calories: 400,
-    dinerScore: 4.2,
+    dinerScore: 1.9,
     image: GRILLED_CHICKEN_BLT_SALAD,
     description:
       "Grilled chicken salad with mixed greens, cherry tomatoes, cucumber, feta cheese, and balsamic vinaigrette.",
@@ -127,7 +127,7 @@ export const foodArr = [
       "Wasabi",
     ],
     calories: 420,
-    dinerScore: 4.8,
+    dinerScore: 4.1,
     image: SUSHI,
     description:
       "Vegan sushi rolls with sushi rice, nori seaweed, carrot, bell pepper, cucumber, avocado, soy sauce, and wasabi.",
