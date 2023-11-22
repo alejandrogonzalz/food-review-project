@@ -12,7 +12,8 @@ import { ClockIcon } from "@radix-ui/react-icons";
 import * as Separator from "@radix-ui/react-separator";
 
 import { calories, totalRecipes } from "../../dummyData.js";
-// import { PieChart, Pie, ResponsiveContainer } from "recharts";
+import { PieChart, Pie, ResponsiveContainer, Cell } from "recharts";
+// import { useScreenWidth } from "../../app/AppContext.js";
 
 export const RecipesOverview = () => {
   return (
@@ -58,24 +59,75 @@ export const RecipesOverview = () => {
   );
 };
 
+const PIE_COLORS = ["#2a4365", "#3c366b", "#702459"];
+
+const RADIAN = Math.PI / 180;
+
+const renderCustomizedLabel = ({
+  cx,
+  cy,
+  midAngle,
+  innerRadius,
+  outerRadius,
+  percent,
+}) => {
+  const radius = innerRadius + (outerRadius - innerRadius) * 0.5;
+  const x = cx + radius * Math.cos(-midAngle * RADIAN);
+  const y = cy + radius * Math.sin(-midAngle * RADIAN);
+
+  return (
+    <text
+      x={x}
+      y={y}
+      fill="white"
+      textAnchor={x > cx ? "start" : "end"}
+      dominantBaseline="central"
+      style={{ fontSize: "0.8rem" }}
+    >
+      {`${(percent * 100).toFixed(0)}%`}
+    </text>
+  );
+};
+
 export const CaloriesSummary = () => {
   return (
     <section className={classes.section_2}>
       <h2 className={classes.title}>Calories Summary</h2>
-      <div>
-        <div>
+      <div className={classes.calories_content}>
+        <div className={classes.text_container}>
           {calories.map((item, index) => (
-            <div key={`${item.name}-${index}`}>
-              <span>{item.name} calories</span>
-              <span>{((item.value / totalRecipes) * 100).toFixed(2)} %</span>
+            <div key={`${item.name}-${index}`} className={classes.text_item}>
+              <span className={classes.label}>{item.name} calories</span>
+              <span className={classes.percentages}>
+                {((item.value / totalRecipes) * 100).toFixed(2)} %
+              </span>
             </div>
           ))}
+        </div>
+
+        <div className={classes.pie_chart_wrapper}>
+          <ResponsiveContainer width="100%" height="100%">
+            <PieChart>
+              <Pie
+                data={calories}
+                dataKey="value"
+                cx="50%"
+                cy="50%"
+                fill="#8884d8"
+                label={renderCustomizedLabel}
+                labelLine={false}
+              >
+                {calories.map((_, index) => (
+                  <Cell
+                    key={`cell-${index}`}
+                    fill={PIE_COLORS[index % PIE_COLORS.length]}
+                  />
+                ))}
+              </Pie>
+            </PieChart>
+          </ResponsiveContainer>
         </div>
       </div>
     </section>
   );
 };
-
-//   <ResponsiveContainer>
-//     <PieChart>{/* <Pie /> */}</PieChart>
-//   </ResponsiveContainer>;

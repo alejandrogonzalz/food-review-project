@@ -58,6 +58,8 @@ const foodArr = [
       "Broccoli",
       "Carrots",
       "Sesame seeds",
+      // Shared ingredient
+      "Soy sauce",
     ],
     calories: 600,
     dinerScore: 4.3,
@@ -74,6 +76,7 @@ const foodArr = [
       "Ground beef",
       "Lettuce",
       "Tomatoes",
+      // Shared ingredient
       "Cheese",
       "Salsa",
     ],
@@ -94,13 +97,15 @@ const foodArr = [
     description:
       "Delicious chicken skewers grilled and glazed with a savory soy-based sauce.",
   },
+  // Additional meals with shared ingredients
   {
     id: 5,
     title: "Grilled Chicken Salad",
     cookingTime: 20,
     ingredients: [
       "Grilled chicken breast",
-      "Mixed greens",
+      // Shared ingredient
+      "Lettuce",
       "Cherry tomatoes",
       "Cucumber",
       "Feta cheese",
@@ -119,9 +124,10 @@ const foodArr = [
     ingredients: [
       "Sushi rice",
       "Nori seaweed",
+      // Shared ingredient
+      "Cucumber",
       "Carrot",
       "Bell pepper",
-      "Cucumber",
       "Avocado",
       "Soy sauce",
       "Wasabi",
@@ -140,8 +146,9 @@ const foodArr = [
       "Lasagna noodles",
       "Ground beef",
       "Tomato sauce",
-      "Ricotta cheese",
+      // Shared ingredient
       "Mozzarella cheese",
+      "Ricotta cheese",
     ],
     calories: 600,
     dinerScore: 4.3,
@@ -163,7 +170,7 @@ const foodArr = [
       "Lemon wedges",
     ],
     calories: 500,
-    dinerScore: 2.4,
+    dinerScore: 3.4,
     image: FISH_AND_CHIPS,
     description:
       "Classic fish and chips with crispy battered white fish fillets, golden fries, and a side of lemon wedges.",
@@ -182,7 +189,7 @@ const foodArr = [
       "Ginger",
     ],
     calories: 650,
-    dinerScore: 4.2,
+    dinerScore: 4.6,
     image: BUTTER_CHICKEN,
     description:
       "Butter chicken - a rich and creamy Indian dish with tender chicken cooked in a flavorful tomato and butter sauce.",
@@ -192,9 +199,10 @@ const foodArr = [
     title: "Japanese Curry",
     cookingTime: 35,
     ingredients: [
+      // Shared ingredient
+      "Carrots",
       "Chicken or vegetables",
       "Japanese curry roux",
-      "Carrots",
       "Potatoes",
       "Onions",
     ],
@@ -246,7 +254,7 @@ for (const key in obj) {
     i++;
   }
 }
-calories.push({ name: "Others", value: i });
+calories.push({ name: "Other", value: i });
 
 const sortedCalories = Object.keys(obj).sort((a, b) => a - b);
 const maxCalories = Math.max(sortedCalories[sortedCalories.length - 1]);

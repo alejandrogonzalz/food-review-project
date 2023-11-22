@@ -7,6 +7,11 @@
   @include Section();
 }
 
+.section_1 {
+  display: flex;
+  flex-direction: column;
+}
+
 .title {
   @include SectionTitle();
 }
@@ -16,6 +21,8 @@
   margin: 10px 0 5px;
   display: grid;
   gap: 5px;
+  align-items: center;
+  flex: 1;
 }
 
 .container {
@@ -83,5 +90,85 @@
     font-size: 0.75rem;
     font-weight: 400;
     color: $gray;
+  }
+}
+
+// ****************** //
+// Calories OverView
+// ****************** //
+.calories_content {
+  margin-top: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 100%;
+}
+
+.text_container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  row-gap: 10px;
+}
+.text_item {
+  display: flex;
+  flex-direction: row;
+  gap: 15px;
+}
+.label {
+  font-weight: 600;
+  flex: 1;
+  text-align: right;
+  font-size: 0.9rem;
+}
+.percentages {
+  flex: 1;
+  font-size: 0.9rem;
+}
+
+.pie_chart_wrapper {
+  aspect-ratio: 1;
+  height: 180px;
+}
+
+/// ***************************
+/// BREAKPOINTS
+/// ***************************
+
+@media screen and (min-width: $breakpoint-laptop) {
+  .main_wrapper {
+    gap: 0;
+  }
+  .calories_content {
+    flex-direction: row;
+  }
+  .text_container,
+  .pie_chart_wrapper {
+    flex: 1;
+  }
+  .pie_chart_wrapper {
+    height: 200px;
+  }
+
+  .subtitle {
+    font-size: 1.1rem;
+  }
+  .primary_value {
+    font-size: 1.1rem;
+  }
+  .secondary_value_container span {
+    font-size: 1rem;
+  }
+}
+
+@media screen and (min-width: $breakpoint-desktop) {
+  .section_1 {
+    flex: 0.5;
+  }
+  .section_2 {
+    flex: 1;
+  }
+  .calories_content {
+    flex-direction: column;
   }
 }
