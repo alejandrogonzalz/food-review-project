@@ -1,0 +1,8 @@
+@use "../sass/colors" as *;
+@use "../sass/breakpoints" as *;
+
+.main_grid {
+  padding: 30px 25px;
+  display: grid;
+  gap: 25px;
+}

@@ -221,5 +221,17 @@
         right: 8px;
       }
     }
+    .card_content {
+      h3 {
+        font-size: 1.3rem;
+      }
+      .svg_content span {
+        font-size: 0.9rem;
+      }
+      .description {
+        font-size: 0.88rem;
+        line-height: 0.9rem;
+      }
+    }
   }
 }

@@ -5,15 +5,15 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import { Navbar } from "./navbar/navbar";
-import { Dashboard } from "./food/dashboard";
-import { Analytics } from "./analytics/analytics";
+import { Home } from "./food/home";
+import { Dashboard } from "./analytics/dashboard";
 
 export const Router = () => {
   const router = createBrowserRouter(
     createRoutesFromElements(
       <Route path="/" element={<Navbar />}>
-        <Route index element={<Dashboard />} />
-        <Route path="/analytics" element={<Analytics />} />
+        <Route index element={<Home />} />
+        <Route path="/analytics" element={<Dashboard />} />
       </Route>
     )
   );

@@ -11,7 +11,7 @@ import BUTTER_CHICKEN from "./assets/butter_chicken.png";
 import JAPANESE_CURRY from "./assets/curry.png";
 import RED_POZOLE from "./assets/pozole.png";
 
-export const foodArr = [
+const foodArr = [
   {
     id: 0,
     title: "Meat Pizza",
@@ -163,7 +163,7 @@ export const foodArr = [
       "Lemon wedges",
     ],
     calories: 500,
-    dinerScore: 3.4,
+    dinerScore: 2.4,
     image: FISH_AND_CHIPS,
     description:
       "Classic fish and chips with crispy battered white fish fillets, golden fries, and a side of lemon wedges.",
@@ -182,7 +182,7 @@ export const foodArr = [
       "Ginger",
     ],
     calories: 650,
-    dinerScore: 4.6,
+    dinerScore: 4.2,
     image: BUTTER_CHICKEN,
     description:
       "Butter chicken - a rich and creamy Indian dish with tender chicken cooked in a flavorful tomato and butter sauce.",
@@ -223,3 +223,54 @@ export const foodArr = [
       "Red pozole - a traditional Mexican soup with pork, hominy, dried chilies, garlic, and topped with cabbage and radishes.",
   },
 ];
+
+// *****************************************
+// TO CREATE NECESARY DATA FOR THE DASHBOARD
+// *****************************************
+const obj = {};
+const calories = [];
+let i = 0;
+
+for (let i = 0; i < foodArr.length; i++) {
+  if (Object.hasOwn(obj, foodArr[i].calories)) {
+    obj[foodArr[i].calories] += 1;
+  } else {
+    obj[foodArr[i].calories] = 1;
+  }
+}
+
+for (const key in obj) {
+  if (obj[key] > 1) {
+    calories.push({ name: key, value: obj[key] });
+  } else {
+    i++;
+  }
+}
+calories.push({ name: "Others", value: i });
+
+const sortedCalories = Object.keys(obj).sort((a, b) => a - b);
+const maxCalories = Math.max(sortedCalories[sortedCalories.length - 1]);
+const minCalories = Math.max(sortedCalories[0]);
+
+let foodWithMaxCal,
+  foodWithMinCal,
+  avgCookingTime = 0;
+for (const item of foodArr) {
+  if (item["calories"] === maxCalories) foodWithMaxCal = item.title;
+  if (item["calories"] === minCalories) foodWithMinCal = item.title;
+
+  avgCookingTime += item["cookingTime"];
+}
+avgCookingTime = (avgCookingTime / foodArr.length).toFixed(1);
+const totalRecipes = foodArr.length;
+
+export {
+  foodArr,
+  calories,
+  maxCalories,
+  minCalories,
+  foodWithMaxCal,
+  foodWithMinCal,
+  avgCookingTime,
+  totalRecipes,
+};

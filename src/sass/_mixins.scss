@@ -1,0 +1,10 @@
+@use "./colors" as *;
+
+@mixin SectionTitle {
+  text-align: center;
+  text-transform: capitalize;
+  font-weight: 300;
+  font-style: italic;
+  color: $gray-700;
+  font-size: 1.4rem;
+}

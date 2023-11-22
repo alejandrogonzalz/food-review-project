@@ -1,9 +1,9 @@
-import classes from "./dashboard.module.scss";
+import classes from "./home.module.scss";
 import * as Separator from "@radix-ui/react-separator";
 import FLAME from "./svg/flame.svg";
 
 import { useState, MouseEvent } from "react";
-import { foodArr } from "../dummyData";
+import { foodArr } from "../dummyData.js";
 import { ClockIcon } from "@radix-ui/react-icons";
 import { useScreenWidth } from "../app/AppContext";
 import { MyDialog } from "./dialog";
@@ -30,7 +30,7 @@ interface CardProps extends CommonFoodProperties {
   onOpenDialog: (event: MouseEvent<HTMLDivElement>) => void;
 }
 
-export const Dashboard = () => {
+export const Home = () => {
   const initialState = {
     title: "",
     image: "",
@@ -56,13 +56,8 @@ export const Dashboard = () => {
     setOpen(true);
   };
 
-  // useEffect(() => {
-  //   console.log(state);
-  //   console.log(open);
-  // }, [state, open]);
-
   return (
-    <>
+    <div style={{ padding: "25px" }}>
       <div>
         <h1>Delicious Food</h1>
         <h4>We made fresh and Healthy food</h4>
@@ -97,7 +92,7 @@ export const Dashboard = () => {
         open={open}
         onOpenChange={setOpen}
       />
-    </>
+    </div>
   );
 };
 
