@@ -2,7 +2,7 @@
 @use "../sass/breakpoints" as *;
 
 .main_grid {
-  padding: 30px 25px;
+  padding: 20px 15px;
   display: grid;
   gap: 25px;
   grid-template-columns: 1fr;
@@ -11,7 +11,6 @@
 /// ***************************
 /// BREAKPOINTS
 /// ***************************
-
 @media screen and (min-width: $breakpoint-laptop) {
   .main_grid {
     grid-template-columns: 2fr 1fr;
@@ -21,7 +20,7 @@
 @media screen and (min-width: $breakpoint-desktop) {
   .main_grid {
     display: flex;
-    padding: 60px 40px;
+    padding: 20px 15px 20px calc(5rem + 20px);
   }
   .overview_container {
     display: flex;

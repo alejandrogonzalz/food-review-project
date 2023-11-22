@@ -1,4 +1,5 @@
 @use "../sass/colors" as *;
+@use "../sass/breakpoints" as *;
 @use "../sass/fonts" as *;
 
 .navbar {
@@ -27,7 +28,71 @@
     border-radius: 15px;
     &:hover {
       cursor: pointer;
-      background-color: #f7fafc62;
+      background-color: #f7fafc1d;
+    }
+    div{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
     }
   }
+}
+
+// .selector{
+//   display: none;
+// }
+
+
+/// ***************************
+/// BREAKPOINTS
+/// ***************************
+@media screen and (min-width: $breakpoint-desktop) {
+  .navbar{
+    all: unset;
+    position: fixed;
+    width: 5rem;
+    height: 100%;
+    background-color: $gray-900;
+    opacity: 0.8;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    & button{
+      padding: 0;
+      border-radius: 0;
+      flex: 1;
+      & div {
+        display: flex;
+        flex-direction: row;
+        transform: rotate(-90deg);   
+        & svg{
+          transform: rotate(360deg);
+        }   
+
+      }
+    }
+  }
+  
+  .selector{
+    height: 50vh;
+    width: 8px;
+    border-radius: 4px;
+    background-color: $pink-900;
+    position: absolute;
+    left: calc(5rem - 4px);
+    transition: 300ms;
+  }
+
+  .analytics{
+    bottom: 0;
+  }
+
+  .selected{
+    & div{
+      color: $pink-700;
+    }
+  }
+
 }

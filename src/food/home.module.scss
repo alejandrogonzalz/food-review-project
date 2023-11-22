@@ -1,6 +1,10 @@
 @use "../sass/colors" as *;
 @use "../sass/breakpoints" as *;
 
+.home_container{
+  padding: 15px 25px;
+}
+
 .card_wrapper {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -68,6 +72,7 @@
     right: 0;
     margin-left: auto;
     margin-right: auto;
+    filter: drop-shadow(10px 7px 8px $gray) !important;
   }
 }
 
@@ -198,6 +203,7 @@
 @media screen and (min-width: $breakpoint-desktop) {
   .card_wrapper {
     grid-template-columns: repeat(4, 1fr);
+    margin-bottom: 0;
   }
   .card_container {
     &:nth-child(3),
@@ -233,5 +239,8 @@
         line-height: 0.9rem;
       }
     }
+  }
+  .home_container{
+    padding: 30px 15px 30px calc(5rem + 20px);
   }
 }

@@ -138,6 +138,7 @@
 @media screen and (min-width: $breakpoint-laptop) {
   .main_wrapper {
     gap: 0;
+    
   }
   .calories_content {
     flex-direction: row;
@@ -145,9 +146,6 @@
   .text_container,
   .pie_chart_wrapper {
     flex: 1;
-  }
-  .pie_chart_wrapper {
-    height: 200px;
   }
 
   .subtitle {
@@ -171,4 +169,5 @@
   .calories_content {
     flex-direction: column;
   }
+
 }

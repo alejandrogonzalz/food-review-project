@@ -57,7 +57,7 @@ export const Home = () => {
   };
 
   return (
-    <div style={{ padding: "25px" }}>
+    <div className={classes.home_container}>
       <div>
         <h1>Delicious Food</h1>
         <h4>We made fresh and Healthy food</h4>
