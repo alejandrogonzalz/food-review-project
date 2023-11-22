@@ -1,0 +1,54 @@
+@use "../../sass/colors" as *;
+@use "../../sass/breakpoints" as *;
+@use "../../sass/mixins" as *;
+
+.section {
+  @include Section();
+  padding: 0;
+}
+
+.tab_list {
+  width: 100%;
+  display: flex;
+  position: relative;
+}
+
+.tab_trigger {
+  all: unset;
+  text-align: center;
+  padding: 8px 0;
+  font-size: 1rem;
+  flex: 1;
+
+  font-weight: 300;
+  color: $gray;
+
+  &:hover {
+    cursor: pointer;
+    background-color: rgba(40, 43, 43, 0.151);
+  }
+}
+
+.active {
+  font-weight: 500;
+  color: black;
+}
+
+.selector {
+  width: calc(100% / 3);
+  height: 2.2px;
+  background-color: $teal-700;
+  position: absolute;
+  top: calc(1rem + 18.2px);
+  transition: 350ms;
+}
+
+.tab1 {
+  left: 0;
+}
+.tab2 {
+  left: calc(100% / 3);
+}
+.tab3 {
+  left: calc(100% / 3 * 2);
+}
