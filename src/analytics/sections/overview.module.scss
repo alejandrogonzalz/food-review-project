@@ -131,11 +131,18 @@
   height: 180px;
 }
 
+.pie_label_text{
+  font-size: 0.85rem;
+}
+
 /// ***************************
 /// BREAKPOINTS
 /// ***************************
 
 @media screen and (min-width: $breakpoint-laptop) {
+  .pie_label_text{
+    font-size: 0.95rem;
+  }
   .main_wrapper {
     gap: 0;
     
@@ -157,9 +164,15 @@
   .secondary_value_container span {
     font-size: 1rem;
   }
+
+  
 }
 
 @media screen and (min-width: $breakpoint-desktop) {
+  .text_container{
+    display: grid;
+    grid-template-columns: 1fr;
+  }
   .section_1 {
     flex: 0.5;
   }
@@ -168,6 +181,9 @@
   }
   .calories_content {
     flex-direction: column;
+  }
+  .pie_label_text{
+    font-size: 1rem;
   }
 
 }

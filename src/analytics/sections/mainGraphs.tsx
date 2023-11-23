@@ -14,9 +14,12 @@ import {
   Tooltip,
   Legend,
   ResponsiveContainer,
+  LineChart,
+  Line
 } from "recharts";
 
-import { foodArr } from "../../dummyData.js";
+import { foodArr, mostCommonIngredients } from "../../dummyData.js";
+import { useScreenWidth } from "../../app/AppContext.js";
 
 export const MainGraphs = () => {
   const [active, setActive] = useState<string>("tab1");
@@ -80,14 +83,18 @@ export const MainGraphs = () => {
         className={classes.tab_content}
         style={{ padding: "15px 10px" }}
       >
-        Tab 2
+        <div className={classes.chart_container}>
+          <CookingTime />
+        </div>      
       </Tabs.Content>
       <Tabs.Content
         value="tab3"
         className={classes.tab_content}
         style={{ padding: "15px 10px" }}
       >
-        Tab 3
+        <div className={classes.chart_container}>
+          <MostCommonIngredients />
+        </div> 
       </Tabs.Content>
     </Tabs.Root>
   );
@@ -107,20 +114,68 @@ const DinerScore = () => {
       >
         <CartesianGrid strokeDasharray="3 3" />
         <XAxis dataKey="title" />
-        <YAxis />
+        <YAxis domain={[0, 5]}/>
         <Tooltip />
         <Legend />
         <Bar
           dataKey="dinerScore"
-          fill="#8884d8"
-          activeBar={<Rectangle fill="pink" stroke="blue" />}
+          fill="#9b2c2c"
+          activeBar={<Rectangle fill="#ecc94b" stroke="black" />}
         />
-        <Bar
-          dataKey="uv"
-          fill="#82ca9d"
-          activeBar={<Rectangle fill="gold" stroke="purple" />}
-        />
+        
       </BarChart>
     </ResponsiveContainer>
   );
 };
+
+const CookingTime = () => {
+
+  const screenWdith = useScreenWidth();
+  const mobile = screenWdith <= 500;
+
+  return (
+    <ResponsiveContainer width="100%" height="100%">
+   <LineChart data={foodArr}
+    margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
+    <CartesianGrid strokeDasharray="3 3" />
+    <XAxis dataKey={mobile ? null : "title"} />
+    <YAxis />
+    <Tooltip />
+    <Legend />
+    <Line type="monotone" dataKey="cookingTime" stroke="#8884d8" />
+    <Line type="monotone" dataKey="Number of ingredients" stroke="#82ca9d" />
+  </LineChart>
+  </ResponsiveContainer>
+  )
+}
+
+
+const MostCommonIngredients = () =>{
+
+  return (
+    <ResponsiveContainer width="100%" height="100%">
+    <BarChart
+      data={mostCommonIngredients}
+      className={classes.bar_chart}
+      margin={{
+        top: 5,
+        right: 30,
+        left: 20,
+        bottom: 5,
+      }}
+    >
+      <CartesianGrid strokeDasharray="3 3" />
+      <XAxis dataKey="ingredient" />
+      <YAxis domain={[0, 5]}/>
+      <Tooltip  />
+      <Legend />
+      <Bar
+        dataKey="recipes"
+        fill="#22543d"
+        activeBar={<Rectangle fill="#81e6d9" stroke="black" />}
+      />
+      
+    </BarChart>
+  </ResponsiveContainer>
+  )
+}

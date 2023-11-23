@@ -5,9 +5,11 @@ import * as Separator from "@radix-ui/react-separator";
 import {clsx} from "clsx";
 
 import {useEffect, useState} from 'react'
+import { useScreenWidth } from "../app/AppContext";
 
 export const Navbar = () => {
   const navigate = useNavigate();
+  const screenWidth = useScreenWidth()
   const {pathname} = useLocation()
   const [selected, setSelected] = useState<string>()
 
@@ -34,7 +36,7 @@ export const Navbar = () => {
             <span>Analytics</span>
             </div>
         </button>
-        <Separator.Root decorative className={clsx(classes.selector, {[classes.analytics]: selected === 'analytics'})}/>
+        { screenWidth >= 1200 ? <Separator.Root decorative className={clsx(classes.selector, {[classes.analytics]: selected === 'analytics'})}/> : null}
       </nav>
 
       <main>

@@ -1,6 +1,7 @@
 import classes from "./home.module.scss";
 import * as Separator from "@radix-ui/react-separator";
 import FLAME from "./svg/flame.svg";
+import LOGO from './svg/hamburguer.svg'
 
 import { useState, MouseEvent } from "react";
 import { foodArr } from "../dummyData.js";
@@ -58,12 +59,11 @@ export const Home = () => {
 
   return (
     <div className={classes.home_container}>
-      <div>
-        <h1>Delicious Food</h1>
+      <div className={classes.main_container}>
+        <div className={classes.main_title}><h1>Delicious Food</h1> <img src={LOGO} alt="Logo" /></div>
         <h4>We made fresh and Healthy food</h4>
       </div>
 
-      <div></div>
 
       <div className={classes.card_wrapper}>
         {foodArr.map((item, index) => (

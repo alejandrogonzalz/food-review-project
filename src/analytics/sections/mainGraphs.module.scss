@@ -5,6 +5,7 @@
 .section {
   @include Section();
   padding: 0;
+  margin-bottom: 80px;
 }
 
 .tab_list {
@@ -58,16 +59,20 @@
 }
 
 .chart_container {
-  height: 700px;
+  height: 450px;
   width: 100%;
   background-color: white;
 }
 
+
+
 /// ***************************
 /// BREAKPOINTS
 /// ***************************
-
 @media screen and (min-width: $breakpoint-laptop) {
+  .chart_container{
+    height: 700px;
+  }
   .section {
     grid-column: span 2;
     margin-bottom: 80px;

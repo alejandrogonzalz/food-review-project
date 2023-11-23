@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import GRILLED_CHICKEN_BLT_SALAD from "./assets/grilled_chicken_blt_salad.png";
 import RAMEN from "./assets/ramen.png";
 import TACOS from "./assets/tacos.png";
@@ -242,12 +243,14 @@ const obj = {};
 const calories = [];
 let i = 0;
 
+
 for (let i = 0; i < foodArr.length; i++) {
   if (Object.hasOwn(obj, foodArr[i].calories)) {
     obj[foodArr[i].calories] += 1;
   } else {
     obj[foodArr[i].calories] = 1;
   }
+  foodArr[i]['Number of ingredients'] = foodArr[i].ingredients.length
 }
 
 for (const key in obj) {
@@ -263,6 +266,8 @@ const sortedCalories = Object.keys(obj).sort((a, b) => a - b);
 const maxCalories = Math.max(sortedCalories[sortedCalories.length - 1]);
 const minCalories = Math.max(sortedCalories[0]);
 
+const ingredientObj = {}
+
 let foodWithMaxCal,
   foodWithMinCal,
   avgCookingTime = 0;
@@ -271,9 +276,48 @@ for (const item of foodArr) {
   if (item["calories"] === minCalories) foodWithMinCal = item.title;
 
   avgCookingTime += item["cookingTime"];
+  for (const ingredient of item.ingredients){
+    if(ingredientObj[ingredient]){
+      ingredientObj[ingredient] += 1
+    } else {
+      ingredientObj[ingredient] = 1
+    }
+  }
 }
 avgCookingTime = (avgCookingTime / foodArr.length).toFixed(1);
 const totalRecipes = foodArr.length;
+
+const mostCommonIngredients = Object.entries(ingredientObj).filter(([_, count]) => count > 1).map(([ingredient, count])=>({ingredient, recipes :count}))
+
+
+const caloriesObj = {
+  'between300And400': 0,
+  'between400And500': 0,
+  'between500And600': 0,
+  'moreThan600': 0
+}; 
+for (let i = 0; i < foodArr.length; i++) {
+  const calories = foodArr[i].calories;
+
+  if (calories >= 200 && calories < 300) {
+      caloriesObj['between200And300'] += 1;
+  } else if (calories >= 300 && calories < 400) {
+      caloriesObj['between300And400'] += 1;
+  } else if (calories >= 400 && calories < 500) {
+      caloriesObj['between400And500'] += 1;
+  } else if (calories >= 500 && calories <= 600) {
+      caloriesObj['between500And600'] += 1;
+  } else if (calories > 600) {
+      caloriesObj['moreThan600'] += 1;
+  }
+}
+
+const caloriesRange = []
+for (const key in caloriesObj) {
+  caloriesRange.push({name: key, value: caloriesObj[key]})
+}
+
+
 
 export {
   foodArr,
@@ -284,4 +328,6 @@ export {
   foodWithMinCal,
   avgCookingTime,
   totalRecipes,
+  caloriesRange,
+  mostCommonIngredients
 };
