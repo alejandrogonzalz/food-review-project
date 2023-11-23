@@ -1,7 +1,7 @@
-Vite Project
+## Food-Review-Project
 Welcome to the food-review-project! This project is built using Vite, a fast development server and a next-generation front-end build tool.
 
-Getting Started
+## Getting Started
 To get started with development, follow these simple steps:
 
 1. Clone the Repository
