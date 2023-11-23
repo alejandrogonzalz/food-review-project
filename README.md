@@ -1,31 +1,28 @@
-# React + TypeScript + Vite
+Vite Project
+Welcome to the food-review-project! This project is built using Vite, a fast development server and a next-generation front-end build tool.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Getting Started
+To get started with development, follow these simple steps:
 
-Currently, two official plugins are available:
+1. Clone the Repository
+bash
+Copy code
+git clone https://github.com/your-username/your-project.git
+2. Install Dependencies
+Navigate to the project directory and install the necessary dependencies.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+bash
+Copy code
+cd your-project
+npm install
+3. Run Development Server
+Once the installation is complete, start the development server.
 
-## Expanding the ESLint configuration
+bash
+Copy code
+npm run dev
+This command will launch the development server, and you can view your project at http://localhost:3000 in your browser.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
 
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
-
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
-# food-review-project
+npm run dev
+Runs the app in development mode. Open http://localhost:5173/ to view it in your browser.
