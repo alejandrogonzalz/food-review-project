@@ -20,9 +20,6 @@ Once the installation is complete, start the development server.
 
 bash
 Copy code
-npm run dev
-This command will launch the development server, and you can view your project at http://localhost:3000 in your browser.
-
 
 npm run dev
 Runs the app in development mode. Open http://localhost:5173/ to view it in your browser.
